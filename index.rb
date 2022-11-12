@@ -19,8 +19,15 @@ end
 
 def returnToMenu
   print "\nDigite 0 para voltar ao menu inicial: "
-  opc = gets.chomp.to_i
-  opc
+  opc = gets.to_i
+
+  if opc != 0  then 
+    system "cls"
+    print "Entrada inválida. Digite novamente: "
+    opc = gets.to_i
+  end
+
+  return opc
 end
 
 # Loop Principal do Código
@@ -28,7 +35,7 @@ while option != 2
   system "cls"
   menu
   option = gets.to_i
-  break if option == 2
+  # break if option == 2
   
   while option == 1
     system "cls"
