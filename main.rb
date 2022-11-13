@@ -34,7 +34,9 @@ end
 while option != 2
   system "cls"
   menu
+
   print "\nDigite a opção >>> "
+
   option = gets.to_i
   
   while option == 1
@@ -49,6 +51,9 @@ while option != 2
 
     system "cls"
 
+    puts "Valor do Produto: #{hashProducts[cod_produto]}"
+    puts "Quantidade Produto: #{qtt_product}"
+
     subtotal = calculateSubTotal(subtotal, hashProducts, cod_produto, qtt_product)
     print "\nSubtotal: R$ #{subtotal}"
 
@@ -58,3 +63,4 @@ end
 
 system "cls"
 puts "\nAté logo!!!"
+
