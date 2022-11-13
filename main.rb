@@ -34,6 +34,9 @@ end
 while option != 2
   system "cls"
   menu
+
+  print "\nDigite a opção >>> "
+
   option = gets.to_i
   
   while option == 1
@@ -47,6 +50,7 @@ while option != 2
     qtt_product = gets.to_i
 
     system "cls"
+
     puts "Valor do Produto: #{hashProducts[cod_produto]}"
     puts "Quantidade Produto: #{qtt_product}"
 
@@ -58,4 +62,5 @@ while option != 2
 end
 
 system "cls"
-puts "Até logo!!!"
+puts "\nAté logo!!!"
+
