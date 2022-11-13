@@ -1,45 +1,60 @@
-opc = 1
-subtotal = 0
-codigo_produto = ""
-qtd_produto = 0
+# Importação de arquivo
+load 'menus.rb'
+include Modules
 
-produtos = {
+option = 1
+subtotal = 0
+qtt_product = 0
+
+hashProducts = {
   1 => 3000,
   2 => 1500,
   3 => 2800,
 }
 
-# Loop Principal do Código
-while opc != 2
-  puts "Selecione a opção desejada: "
-  puts "[1] Comprar "
-  puts "[2] Sair "
+def calculateSubTotal (subtotal, products, code, quantity)
+  subtotal += (products[code] * quantity)
+  return subtotal
+end
+
+def returnToMenu
+  print "\nDigite 0 para voltar ao menu inicial: "
   opc = gets.to_i
-  break if opc == 2
+
+  if opc != 0  then 
+    system "cls"
+    print "Entrada inválida. Digite novamente: "
+    opc = gets.to_i
+  end
+
+  return opc
+end
+
+# Loop Principal do Código
+while option != 2
+  system "cls"
+  menu
+  print "\nDigite a opção >>> "
+  option = gets.to_i
   
-  opc_compra = 1
-  while opc_compra != 0
-    puts "Selecione a opção desejada: "
-    puts "[1] Notebook: R$ 3000,00 "
-    puts "[2] Celular: R$ 1500,00 "
-    puts "[3] Tablet: R$ 2800,00 "
-    puts "\n"
+  while option == 1
+    system "cls"
+    menu_products
 
     print "Opção: "
     cod_produto = gets.to_i
 
     print "Quantidade: "
-    qtd_produto = gets.to_i
+    qtt_product = gets.to_i
 
-    puts "Valor do Produto: #{produtos[cod_produto]}"
-    puts "Quantidade Produto: #{qtd_produto}"
+    system "cls"
 
-    subtotal += (produtos[cod_produto] * qtd_produto)
+    subtotal = calculateSubTotal(subtotal, hashProducts, cod_produto, qtt_product)
     print "\nSubtotal: R$ #{subtotal}"
 
-    print "\nDigite 0 para voltar ao menu inicial: "
-    opc_compra = gets.to_i 
+    option = returnToMenu
   end
 end
 
-puts "Até logo!!!"
+system "cls"
+puts "\nAté logo!!!"
